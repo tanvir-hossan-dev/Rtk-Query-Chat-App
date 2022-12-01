@@ -23,41 +23,17 @@
       "password": "$2a$10$aafvHsLOHsGou/Xwrja4kONPbASzqXesCqt08TWXA3WJovRgnfnZO",
       "name": "Tanvir Hossan",
       "id": 4
-    },
-    {
-      "email": "asdfasd@gmail.com",
-      "password": "$2a$10$NcHKbDyD28ZhuFkcFKJZWuoww/X.QAzY2ujoL4l5fd0qhRnlVF6vi",
-      "name": "asdf",
-      "id": 5
-    },
-    {
-      "email": "tanvirhossan1@gmail.com",
-      "password": "$2a$10$nBiuNi1sYRR5oyHP4YRE8.tuVeORSQ1wiQa9bbYqv7xiG2PChnUx.",
-      "name": "Tanvir Hossan",
-      "id": 6
-    },
-    {
-      "email": "tanvir123@gmail.com",
-      "password": "$2a$10$Wb/xUJ2ndIdg0CVxLYWeyem2pJ5/Ea3FLUhmcYH.MNxs3j2SJoHsy",
-      "name": "Tanvir Hossan",
-      "id": 7
-    },
-    {
-      "email": "tanvirhossan12@gmail.com",
-      "password": "$2a$10$eEzHGAjM2IrJIJYGCXZLcelWRsMtOZ05.UllnJQ0oFwkkQ7nSijHm",
-      "name": "ami",
-      "id": 8
     }
   ],
   "conversations": [
     {
       "id": 1,
-      "participants": "sumit@learnwithsumit.com-akash@learnwithsumit.com",
+      "participants": "tanvirhossan@gmail.com-akash@learnwithsumit.com",
       "users": [
         {
-          "email": "sumit@learnwithsumit.com",
-          "name": "Sumit Saha",
-          "id": 1
+          "email": "tanvirhossan@gmail.com",
+          "name": "Tanvir Hossan",
+          "id": 4
         },
         {
           "email": "akash@learnwithsumit.com",
@@ -70,12 +46,12 @@
     },
     {
       "id": 2,
-      "participants": "sumit@learnwithsumit.com-saad@learnwithsumit.com",
+      "participants": "tanvirhossan@gmail.com-saad@learnwithsumit.com",
       "users": [
         {
-          "email": "sumit@learnwithsumit.com",
-          "name": "Sumit Saha",
-          "id": 1
+          "email": "tanvirhossan@gmail.com",
+          "name": "Tanvir Hossan",
+          "id": 4
         },
         {
           "email": "akash@learnwithsumit.com",
@@ -92,9 +68,9 @@
       "id": 1,
       "conversationId": 1,
       "sender": {
-        "email": "sumit@learnwithsumit.com",
-        "name": "Sumit Saha",
-        "id": 1
+        "email": "tanvirhossan@gmail.com",
+        "name": "Tanvir Hossan",
+        "id": 4
       },
       "receiver": {
         "email": "akash@learnwithsumit.com",
@@ -113,9 +89,9 @@
         "id": 2
       },
       "receiver": {
-        "email": "sumit@learnwithsumit.com",
-        "name": "Sumit Saha",
-        "id": 1
+        "email": "tanvirhossan@gmail.com",
+        "name": "Tanvir Hossan",
+        "id": 4
       },
       "message": "How are you?",
       "timestamp": 1661976143678
