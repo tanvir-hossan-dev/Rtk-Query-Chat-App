@@ -15,27 +15,21 @@ export default function ChatItems() {
   let content = null;
 
   if (isLoading) {
-    content = <li className="m-2 text-center">Loading..... </li>;
+    content = <h1>Loading....</h1>;
   } else if (!isLoading && isError) {
-    content = (
-      <li className="m-2 text-center">
-        <Error message="There was an erro" />
-      </li>
-    );
+    content = <Error message={error.data.message} />;
   } else if (!isLoading && !isError && conversations?.length === 0) {
-    content = <li className="m-2 text-center">No conversation found! </li>;
+    content = <Error message="No conversetion found" />;
   } else if (!isLoading && !isError && conversations?.length > 0) {
     content = conversations.map((conversation) => {
-      const { message, timestamp, id } = conversation;
-      console.log(id);
-      const { email: partnerEmail, name } = getPartnerInfo(conversation.users, email);
-
+      const { message, timestamp, id, users } = conversation;
+      const partner = getPartnerInfo(users, email);
       return (
-        <li key={id} className="list-none">
-          <Link to={`inbox/${id}`}>
+        <li key={id}>
+          <Link to={`/inbox/${id}`}>
             <ChatItem
-              avatar={gravatarUrl(partnerEmail, { size: 80 })}
-              name={name}
+              avatar={gravatarUrl(partner.email, { size: 80 })}
+              name={partner.name}
               lastMessage={message}
               lastTime={moment(timestamp).fromNow()}
             />

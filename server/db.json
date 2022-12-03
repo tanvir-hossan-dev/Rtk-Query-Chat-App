@@ -43,24 +43,6 @@
       ],
       "message": "How are you?",
       "timestamp": 1661976143678
-    },
-    {
-      "id": 2,
-      "participants": "tanvirhossan@gmail.com-saad@learnwithsumit.com",
-      "users": [
-        {
-          "email": "tanvirhossan@gmail.com",
-          "name": "Tanvir Hossan",
-          "id": 4
-        },
-        {
-          "email": "akash@learnwithsumit.com",
-          "name": "Saad Hasan",
-          "id": 3
-        }
-      ],
-      "message": "How are you?",
-      "timestamp": 1661976143678
     }
   ],
   "messages": [
@@ -93,7 +75,23 @@
         "name": "Tanvir Hossan",
         "id": 4
       },
-      "message": "How are you?",
+      "message": "How are you? I'm fine",
+      "timestamp": 1661976143678
+    },
+    {
+      "id": 3,
+      "conversationId": 1,
+      "sender": {
+        "email": "tanvirhossan@gmail.com",
+        "name": "Tanvir Hossan",
+        "id": 2
+      },
+      "receiver": {
+        "email": "akash@learnwithsumit.com",
+        "name": "Akash Ahmed",
+        "id": 4
+      },
+      "message": "How are you? I'm fine",
       "timestamp": 1661976143678
     }
   ]

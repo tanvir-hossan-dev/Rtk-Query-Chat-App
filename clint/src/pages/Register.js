@@ -29,8 +29,8 @@ export default function Register() {
   }, [isSuccess, error, err, navigate]);
 
   const handleSubmit = (e) => {
-    const { name, email, password } = inputs;
     e.preventDefault();
+    const { name, email, password } = inputs;
     if (inputs.password === inputs.confirmPassword) {
       setErr("");
       register({ name, email, password });
