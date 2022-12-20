@@ -23,51 +23,37 @@
       "password": "$2a$10$aafvHsLOHsGou/Xwrja4kONPbASzqXesCqt08TWXA3WJovRgnfnZO",
       "name": "Tanvir Hossan",
       "id": 4
+    },
+    {
+      "email": "bappi@gmail.com",
+      "password": "$2a$10$9tWVlowPlIABjw8AVVABaul3DHpDHAA/UCQ0NUGQFY.QKQOE851XS",
+      "name": "Bappi Hossan",
+      "id": 5
     }
   ],
   "conversations": [
     {
-      "participants": "tanvirhossan@gmail.com-akash@learnwithsumit.com",
+      "participants": "bappi@gmail.com-tanvirhossan@gmail.com",
       "users": [
         {
-          "email": "tanvirhossan@gmail.com",
-          "name": "Tanvir Hossan",
-          "id": 4
+          "email": "bappi@gmail.com",
+          "name": "Bappi Hossan",
+          "id": 5
         },
         {
-          "email": "akash@learnwithsumit.com",
-          "password": "$2a$10$CtHS.yCGS80jiuZx8yKEI.5zdiZykHF/6aPTDqpHl6ZqEFGISOHKO",
-          "name": "Akash Ahmed",
-          "id": 2
-        }
-      ],
-      "message": "are you here",
-      "timestamp": 1671037999453,
-      "id": 5
-    },
-    {
-      "participants": "tanvirhossan@gmail.com-sumit@learnwithsumit.com",
-      "users": [
-        {
           "email": "tanvirhossan@gmail.com",
+          "password": "$2a$10$aafvHsLOHsGou/Xwrja4kONPbASzqXesCqt08TWXA3WJovRgnfnZO",
           "name": "Tanvir Hossan",
           "id": 4
-        },
-        {
-          "email": "sumit@learnwithsumit.com",
-          "password": "$2a$10$CtHS.yCGS80jiuZx8yKEI.5zdiZykHF/6aPTDqpHl6ZqEFGISOHKO",
-          "name": "Sumit Saha",
-          "id": 1
         }
       ],
-      "message": "Kemon asen sir?",
-      "timestamp": 1671038175326,
-      "id": 6
+      "message": "How are you?",
+      "timestamp": 1671544269000,
+      "id": 1
     }
   ],
   "messages": [
     {
-      "id": 1,
       "conversationId": 1,
       "sender": {
         "email": "tanvirhossan@gmail.com",
@@ -75,44 +61,64 @@
         "id": 4
       },
       "receiver": {
-        "email": "akash@learnwithsumit.com",
-        "name": "Akash Ahmed",
-        "id": 2
+        "email": "bappi@gmail.com",
+        "password": "$2a$10$9tWVlowPlIABjw8AVVABaul3DHpDHAA/UCQ0NUGQFY.QKQOE851XS",
+        "name": "Bappi Hossan",
+        "id": 5
       },
-      "message": "Hello",
-      "timestamp": 1661976143557
+      "message": "Hello Bappi",
+      "timestamp": 1671544210376,
+      "id": 1
     },
     {
-      "id": 2,
       "conversationId": 1,
       "sender": {
-        "email": "akash@learnwithsumit.com",
-        "name": "Akash Ahmed",
-        "id": 2
-      },
-      "receiver": {
         "email": "tanvirhossan@gmail.com",
         "name": "Tanvir Hossan",
         "id": 4
       },
-      "message": "How are you? I'm fine",
-      "timestamp": 1661976143678
+      "receiver": {
+        "email": "bappi@gmail.com",
+        "password": "$2a$10$9tWVlowPlIABjw8AVVABaul3DHpDHAA/UCQ0NUGQFY.QKQOE851XS",
+        "name": "Bappi Hossan",
+        "id": 5
+      },
+      "message": "Hello everyone",
+      "timestamp": 1671544221457,
+      "id": 2
     },
     {
-      "id": 3,
       "conversationId": 1,
       "sender": {
-        "email": "tanvirhossan@gmail.com",
-        "name": "Tanvir Hossan",
-        "id": 2
+        "email": "bappi@gmail.com",
+        "name": "Bappi Hossan",
+        "id": 5
       },
       "receiver": {
-        "email": "akash@learnwithsumit.com",
-        "name": "Akash Ahmed",
+        "email": "tanvirhossan@gmail.com",
+        "name": "Tanvir Hossan",
         "id": 4
       },
-      "message": "How are you? I'm fine",
-      "timestamp": 1661976143678
+      "message": "Hello Tanvir",
+      "timestamp": 1671544249633,
+      "id": 3
+    },
+    {
+      "conversationId": 1,
+      "sender": {
+        "email": "bappi@gmail.com",
+        "name": "Bappi Hossan",
+        "id": 5
+      },
+      "receiver": {
+        "email": "tanvirhossan@gmail.com",
+        "password": "$2a$10$aafvHsLOHsGou/Xwrja4kONPbASzqXesCqt08TWXA3WJovRgnfnZO",
+        "name": "Tanvir Hossan",
+        "id": 4
+      },
+      "message": "How are you?",
+      "timestamp": 1671544269000,
+      "id": 4
     }
   ]
 }

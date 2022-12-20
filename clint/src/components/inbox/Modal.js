@@ -60,13 +60,15 @@ export default function Modal({ open, control }) {
     if (isAddConversationSuccess || isEditConversationSUccess) {
       control();
     }
-  }, [isEditConversationSUccess, isAddConversationSuccess, control]);
+  }, [isEditConversationSUccess, isAddConversationSuccess]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (conversation?.length > 0) {
+      console.log("edit");
       editConversation({
         id: conversation[0].id,
+        sender: myEmail,
         data: {
           participants: `${myEmail}-${participant[0].email}`,
           users: [loggedInUser, participant[0]],
@@ -76,11 +78,15 @@ export default function Modal({ open, control }) {
       });
       setMessage("");
     } else if (conversation?.length === 0) {
+      console.log("add");
       addConversation({
-        participants: `${myEmail}-${participant[0].email}`,
-        users: [loggedInUser, participant[0]],
-        message,
-        timestamp: new Date().getTime(),
+        sender: myEmail,
+        data: {
+          participants: `${myEmail}-${participant[0].email}`,
+          users: [loggedInUser, participant[0]],
+          message,
+          timestamp: new Date().getTime(),
+        },
       });
       setMessage("");
     }
