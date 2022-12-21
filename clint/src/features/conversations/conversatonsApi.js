@@ -17,44 +17,39 @@ export const conversationApi = apiSlice.injectEndpoints({
         body: data,
       }),
 
-      // async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-      //   const conversation = await queryFulfilled;
-      //   console.log(conversation);
-      //   if (conversation?.data?.id) {
-      //     const users = arg.data.users;
-      //     console.log(users);
-      //     const senderUser = users.find((user) => user.email === arg.sender);
-      //     const reciverUser = users.find((user) => user.email !== arg.sender);
-      //     console.log("i'm add");
-      //     dispatch(
-      //       messageApi.endpoints.addConversation.initiate({
-      //         conversationId: conversation.data.id,
-      //         sender: senderUser,
-      //         reciver: reciverUser,
-      //         message: arg.data.message,
-      //         timestamp: arg.data.timestamp,
-      //       })
-      //     );
-      //   }
-      // },
-
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-        const conversation = await queryFulfilled;
-        if (conversation?.data?.id) {
-          // silent entry to message table
-          const users = arg.data.users;
-          const senderUser = users.find((user) => user.email === arg.sender);
-          const receiverUser = users.find((user) => user.email !== arg.sender);
+        //  optomistic cach update start
+        // const conversation = await queryFulfilled;
+        // const patchResult1 = dispatch(
+        //   apiSlice.util.updateQueryData("getConversations", arg.sender, (draft) => {
+        //     const draftConversations = draft.find((c) => c.id == conversation?.data?.id);
+        //     draftConversations.message = arg.data.message;
+        //     draftConversations.timestamp = arg.data.timestamp;
+        //   })
+        // );
 
-          dispatch(
-            messageApi.endpoints.addMessage.initiate({
-              conversationId: conversation?.data?.id,
-              sender: senderUser,
-              receiver: receiverUser,
-              message: arg.data.message,
-              timestamp: arg.data.timestamp,
-            })
-          );
+        //  optomistic cach update end
+
+        try {
+          const conversation = await queryFulfilled;
+          if (conversation?.data?.id) {
+            // silent entry to message table
+            const users = arg.data.users;
+            const senderUser = users.find((user) => user.email === arg.sender);
+            const receiverUser = users.find((user) => user.email !== arg.sender);
+
+            dispatch(
+              messageApi.endpoints.addMessage.initiate({
+                conversationId: conversation?.data?.id,
+                sender: senderUser,
+                receiver: receiverUser,
+                message: arg.data.message,
+                timestamp: arg.data.timestamp,
+              })
+            );
+          }
+        } catch (err) {
+          // patchResult1.undo();
         }
       },
     }),
@@ -64,43 +59,46 @@ export const conversationApi = apiSlice.injectEndpoints({
         method: "PATCH",
         body: data,
       }),
-      // async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-      //   const conversation = await queryFulfilled;
-      //   console.log(conversation);
-      //   if (conversation?.data?.id) {
-      //     const users = arg?.data?.users;
-      //     console.log(users);
-      //     console.log("i'm edit");
-      //     const senderUser = users.find((user) => user.email === arg.sender);
-      //     const reciverUser = users.find((user) => user.email !== arg.sender);
-      //     dispatch(
-      //       messageApi.endpoints.addConversation.initiate({
-      //         conversationId: conversation?.data?.id,
-      //         sender: senderUser,
-      //         reciver: reciverUser,
-      //         message: arg.data.message,
-      //         timestamp: arg.data.timestamp,
-      //       })
-      //     );
-      //   }
-      // },
-      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-        const conversation = await queryFulfilled;
-        if (conversation?.data?.id) {
-          // silent entry to message table
-          const users = arg.data.users;
-          const senderUser = users.find((user) => user.email === arg.sender);
-          const receiverUser = users.find((user) => user.email !== arg.sender);
 
-          dispatch(
-            messageApi.endpoints.addMessage.initiate({
-              conversationId: conversation?.data?.id,
-              sender: senderUser,
-              receiver: receiverUser,
-              message: arg.data.message,
-              timestamp: arg.data.timestamp,
-            })
-          );
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        //  optomistic cach update start
+
+        const patchResult1 = dispatch(
+          apiSlice.util.updateQueryData("getConversations", arg.sender, (draft) => {
+            const draftConversations = draft.find((c) => c.id == arg.id);
+            draftConversations.message = arg.data.message;
+            draftConversations.timestamp = arg.data.timestamp;
+          })
+        );
+
+        //  optomistic cach update end
+
+        try {
+          const conversation = await queryFulfilled;
+          if (conversation?.data?.id) {
+            // silent entry to message table
+            const users = arg.data.users;
+            const senderUser = users.find((user) => user.email === arg.sender);
+            const receiverUser = users.find((user) => user.email !== arg.sender);
+
+            const res = await dispatch(
+              messageApi.endpoints.addMessage.initiate({
+                conversationId: conversation?.data?.id,
+                sender: senderUser,
+                receiver: receiverUser,
+                message: arg.data.message,
+                timestamp: arg.data.timestamp,
+              })
+            ).unwrap();
+
+            dispatch(
+              apiSlice.util.updateQueryData("getMessage", res.conversationId.toString(), (draft) => {
+                draft.push(res);
+              })
+            );
+          }
+        } catch (err) {
+          patchResult1.undo();
         }
       },
     }),
